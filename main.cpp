@@ -1,6 +1,6 @@
 /*
  * Brandon Castor 817046315
- * Alex Howes
+ * Alexander Howes 820184866 cssc 2165
  */
 #include <iostream>
 
