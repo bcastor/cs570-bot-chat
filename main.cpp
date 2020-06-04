@@ -9,20 +9,21 @@
 using namespace std;
 
 #define NUM_THREADS 7
-
+//makes the thread perform an action
 void *chat(void *proccid){
     long pid;
     pid = (long)proccid;
     cout << "Hello, i'm a bot #" << pid << endl;
     pthread_exit(nullptr);
 }
-
+//creates 7 threads and performs an action upon creation
 void bots(){
 
     pthread_t bots[NUM_THREADS];
     int rc;
 
     for(int i = 0; i < NUM_THREADS; i++){
+        //creates a thread called bot and displays a message upon creation
         rc = pthread_create(&bots[i], nullptr, chat, (void *)  (size_t)i);
 
         if (rc){
@@ -42,6 +43,7 @@ int main() {
     myfile << getpid() << "\n" ;
     myfile.close();
 
+    //call the bots function to initialize threads
     bots();
 
     return 0;
