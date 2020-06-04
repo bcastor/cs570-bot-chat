@@ -3,8 +3,13 @@
  * Alexander Howes 820184866 cssc 2165
  */
 #include <iostream>
+#include <fstream>
+#include <unistd.h>
 
 int main() {
-    std::cout << "hello" << std::endl;
+    ofstream myfile;
+    myfile.open("QUOTE.txt");
+    myfile << getpid() << "\n" ;
+    myfile.close();
     return 0;
 }
