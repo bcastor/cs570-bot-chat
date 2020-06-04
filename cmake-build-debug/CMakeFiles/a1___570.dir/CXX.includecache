@@ -13,4 +13,8 @@ fstream
 -
 unistd.h
 -
+cstdlib
+-
+pthread.h
+-
 
