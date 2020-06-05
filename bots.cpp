@@ -31,7 +31,7 @@ int main() {
     int rc;
     int i;
 
-    for (i = 0; i < NUM_THREADS; i++) {
+    for (i = 0; i <= NUM_THREADS; i++) {
         cout << "creating bot# " << i << endl;
         //creates a thread called bot and displays a message upon creation
         rc = pthread_create(&bots[i], NULL, chat, (void *) (size_t) i);
