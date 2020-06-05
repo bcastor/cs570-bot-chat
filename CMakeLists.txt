@@ -3,4 +3,4 @@ project(a1___570)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(a1___570 main.cpp)
+add_executable(a1___570 bots.cpp)

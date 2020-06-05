@@ -48,10 +48,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/brandoncastor/Documents/cs570/ a1---570"
+CMAKE_SOURCE_DIR = /Users/brandoncastor/Documents/cs570/a1---570
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/brandoncastor/Documents/cs570/ a1---570/cmake-build-debug"
+CMAKE_BINARY_DIR = /Users/brandoncastor/Documents/cs570/a1---570/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/brandoncastor/Documents/cs570/ a1---570/cmake-build-debug/CMakeFiles" "/Users/brandoncastor/Documents/cs570/ a1---570/cmake-build-debug/CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/brandoncastor/Documents/cs570/a1---570/cmake-build-debug/CMakeFiles /Users/brandoncastor/Documents/cs570/a1---570/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/brandoncastor/Documents/cs570/ a1---570/cmake-build-debug/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/brandoncastor/Documents/cs570/a1---570/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -123,32 +123,32 @@ a1___570/fast:
 	$(MAKE) -f CMakeFiles/a1___570.dir/build.make CMakeFiles/a1___570.dir/build
 .PHONY : a1___570/fast
 
-main.o: main.cpp.o
+bots.o: bots.cpp.o
 
-.PHONY : main.o
+.PHONY : bots.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/a1___570.dir/build.make CMakeFiles/a1___570.dir/main.cpp.o
-.PHONY : main.cpp.o
+bots.cpp.o:
+	$(MAKE) -f CMakeFiles/a1___570.dir/build.make CMakeFiles/a1___570.dir/bots.cpp.o
+.PHONY : bots.cpp.o
 
-main.i: main.cpp.i
+bots.i: bots.cpp.i
 
-.PHONY : main.i
+.PHONY : bots.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/a1___570.dir/build.make CMakeFiles/a1___570.dir/main.cpp.i
-.PHONY : main.cpp.i
+bots.cpp.i:
+	$(MAKE) -f CMakeFiles/a1___570.dir/build.make CMakeFiles/a1___570.dir/bots.cpp.i
+.PHONY : bots.cpp.i
 
-main.s: main.cpp.s
+bots.s: bots.cpp.s
 
-.PHONY : main.s
+.PHONY : bots.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/a1___570.dir/build.make CMakeFiles/a1___570.dir/main.cpp.s
-.PHONY : main.cpp.s
+bots.cpp.s:
+	$(MAKE) -f CMakeFiles/a1___570.dir/build.make CMakeFiles/a1___570.dir/bots.cpp.s
+.PHONY : bots.cpp.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... a1___570"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... bots.o"
+	@echo "... bots.i"
+	@echo "... bots.s"
 .PHONY : help
 
 
