@@ -12,11 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61d1e675-690c-4b01-9f5c-59c3be8d6a27" name="Default Changelist" comment="added comments">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/a1___570.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/a1___570.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/a1___570.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/a1___570.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bots.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/bots.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/a1___570" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/a1___570" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +71,7 @@
       <workItem from="1591296558058" duration="938000" />
       <workItem from="1591297719035" duration="280000" />
       <workItem from="1591298353008" duration="4217000" />
+      <workItem from="1591320944530" duration="40000" />
     </task>
     <task id="LOCAL-00001" summary="added my name as a comment on the top">
       <created>1591215730777</created>
