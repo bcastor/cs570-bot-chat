@@ -12,25 +12,29 @@
 using namespace std;
 
 #define NUM_THREADS 7
+ofstream myfile;
+
 //makes the bot send a message and display its id
 void *chat(void *botid){
     long bid;
     bid = (long)botid;
-    cout << "Hello, i'm a bot #" << bid << endl;
+    myfile.open("QUOTE.txt");
+    myfile << "i'm a bot\n";
+    myfile.close();
+
+    //cout << "Hello, i'm a bot #" << bid << endl;
     pthread_exit(NULL);
 }
 
 int main() {
 
-
-    ofstream myfile;
-    myfile.open("QUOTE.txt");
-    myfile << getpid() << "\n";
-    myfile.close();
+//    myfile.open("QUOTE.txt");
+//    myfile << getpid() << "\r";
+//    myfile.close();
 
     pthread_t bots[NUM_THREADS];
     int rc;
-    int i;
+    long i;
 
     for (i = 0; i <= NUM_THREADS; i++) {
         cout << "creating bot# " << i << endl;
