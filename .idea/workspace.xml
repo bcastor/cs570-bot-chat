@@ -11,7 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61d1e675-690c-4b01-9f5c-59c3be8d6a27" name="Default Changelist" comment="added comments">
+    <list default="true" id="61d1e675-690c-4b01-9f5c-59c3be8d6a27" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bots.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/bots.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/a1___570" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/a1___570" afterDir="false" />
@@ -73,6 +73,7 @@
       <workItem from="1591297719035" duration="280000" />
       <workItem from="1591298353008" duration="4217000" />
       <workItem from="1591320944530" duration="40000" />
+      <workItem from="1591647318764" duration="12441000" />
     </task>
     <task id="LOCAL-00001" summary="added my name as a comment on the top">
       <created>1591215730777</created>
@@ -102,7 +103,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591298855378</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="current working program with .txt issues">
+      <created>1591481941664</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1591481941664</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,7 +122,8 @@
     <MESSAGE value="Added Alex's name" />
     <MESSAGE value="added a chat function for the bot to display a message and its id, also created a function to create 7 threads that that would display a message upon creation" />
     <MESSAGE value="added comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="added comments" />
+    <MESSAGE value="current working program with .txt issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="current working program with .txt issues" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -122,26 +131,26 @@
       <screen x="0" y="23" width="1440" height="824" />
     </state>
     <state x="298" y="302" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1440.824@0.23.1440.824" timestamp="1591298129590" />
-    <state x="517" y="52" key="CommitChangelistDialog2" timestamp="1591308162523">
+    <state x="517" y="52" key="CommitChangelistDialog2" timestamp="1591481941498">
       <screen x="0" y="23" width="1440" height="824" />
     </state>
-    <state x="517" y="52" key="CommitChangelistDialog2/0.23.1440.824@0.23.1440.824" timestamp="1591308162523" />
-    <state width="1081" height="162" key="GridCell.Tab.0.bottom" timestamp="1591481757902">
+    <state x="517" y="52" key="CommitChangelistDialog2/0.23.1440.824@0.23.1440.824" timestamp="1591481941498" />
+    <state width="1081" height="162" key="GridCell.Tab.0.bottom" timestamp="1591683619220">
       <screen x="0" y="23" width="1440" height="824" />
     </state>
-    <state width="1081" height="162" key="GridCell.Tab.0.bottom/0.23.1440.824@0.23.1440.824" timestamp="1591481757902" />
-    <state width="1081" height="162" key="GridCell.Tab.0.center" timestamp="1591481757901">
+    <state width="1081" height="162" key="GridCell.Tab.0.bottom/0.23.1440.824@0.23.1440.824" timestamp="1591683619220" />
+    <state width="1081" height="162" key="GridCell.Tab.0.center" timestamp="1591683619219">
       <screen x="0" y="23" width="1440" height="824" />
     </state>
-    <state width="1081" height="162" key="GridCell.Tab.0.center/0.23.1440.824@0.23.1440.824" timestamp="1591481757901" />
-    <state width="1081" height="162" key="GridCell.Tab.0.left" timestamp="1591481757900">
+    <state width="1081" height="162" key="GridCell.Tab.0.center/0.23.1440.824@0.23.1440.824" timestamp="1591683619219" />
+    <state width="1081" height="162" key="GridCell.Tab.0.left" timestamp="1591683619218">
       <screen x="0" y="23" width="1440" height="824" />
     </state>
-    <state width="1081" height="162" key="GridCell.Tab.0.left/0.23.1440.824@0.23.1440.824" timestamp="1591481757900" />
-    <state width="1081" height="162" key="GridCell.Tab.0.right" timestamp="1591481757901">
+    <state width="1081" height="162" key="GridCell.Tab.0.left/0.23.1440.824@0.23.1440.824" timestamp="1591683619218" />
+    <state width="1081" height="162" key="GridCell.Tab.0.right" timestamp="1591683619219">
       <screen x="0" y="23" width="1440" height="824" />
     </state>
-    <state width="1081" height="162" key="GridCell.Tab.0.right/0.23.1440.824@0.23.1440.824" timestamp="1591481757901" />
+    <state width="1081" height="162" key="GridCell.Tab.0.right/0.23.1440.824@0.23.1440.824" timestamp="1591683619219" />
     <state x="213" y="165" key="MergeDialog" timestamp="1591293323012">
       <screen x="0" y="23" width="1440" height="824" />
     </state>
@@ -150,13 +159,17 @@
       <screen x="0" y="23" width="1440" height="824" />
     </state>
     <state x="431" y="158" key="MultipleFileMergeDialog/0.23.1440.824@0.23.1440.824" timestamp="1591293323034" />
-    <state x="397" y="267" key="com.intellij.ide.util.TipDialog" timestamp="1591318591726">
+    <state x="397" y="267" key="com.intellij.ide.util.TipDialog" timestamp="1591647319068">
       <screen x="0" y="23" width="1440" height="824" />
     </state>
-    <state x="397" y="267" key="com.intellij.ide.util.TipDialog/0.23.1440.824@0.23.1440.824" timestamp="1591318591726" />
+    <state x="397" y="267" key="com.intellij.ide.util.TipDialog/0.23.1440.824@0.23.1440.824" timestamp="1591647319068" />
     <state x="503" y="359" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591481868552">
       <screen x="0" y="23" width="1440" height="824" />
     </state>
     <state x="503" y="359" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.824@0.23.1440.824" timestamp="1591481868552" />
+    <state x="566" y="82" key="refactoring.ChangeSignatureDialog" timestamp="1591662148050">
+      <screen x="0" y="23" width="1440" height="824" />
+    </state>
+    <state x="566" y="82" key="refactoring.ChangeSignatureDialog/0.23.1440.824@0.23.1440.824" timestamp="1591662148050" />
   </component>
 </project>
