@@ -10,42 +10,42 @@
 #include <semaphore.h>
 #include <chrono>
 #include <unistd.h>
+#include <string>
 
 using namespace std;
 
 #define NUM_THREADS 7
-ofstream myfile;
+string file = "QUOTE.txt";
+ofstream fout(file);
 sem_t FLAG;
 
 
-void *chat(void *botid) {
+void *chat(void* botid) {
 
-    long bid;
-    bid = (long)botid;
+    int bid = *((int*) botid);
     int reps = 0;
 
     while( reps != 7){
         if(bid % 2 == 0){
 
+            sleep(2);
             sem_wait(&FLAG);
             cout << "thread" << bid << " is running" << endl;
-            myfile.open("QUOTE.txt");
-            myfile << "bot#" << bid << " Controlling complexity is the essence of computer programming.\n\r";
-            myfile.close();
+            fout.open(file.c_str());
+            fout << "bot#" << bid << " Controlling complexity is the essence of computer programming.\n" << endl;
+            fout.close();
             sem_post(&FLAG);
             reps++;
-            sleep(2);
         }
         else{
-
+            sleep(3);
             sem_wait(&FLAG);
             cout << "thread" << bid << " is running" << endl;
-            myfile.open("QUOTE.txt");
-            myfile << "bot#" << bid << " Computer science is no more about computers than astronomy is about telescopes.\n\r";
-            myfile.close();
+            fout.open(file.c_str());
+            fout << "bot#" << bid << " Computer science is no more about computers than astronomy is about telescopes.\n" << endl;
+            fout.close();
             sem_post(&FLAG);
             reps++;
-            sleep(3);
         }
     }
 }
@@ -54,15 +54,17 @@ int main() {
 
     sem_init(&FLAG,0,1);
     pthread_t bots[NUM_THREADS];
+    int thread_args[NUM_THREADS];
     int i;
+    int rc;
 
-    myfile.open("QUOTE.txt");
-    myfile << getpid()  << "\n\r";
-    myfile.close();
+    fout.open(file.c_str());
+    fout << getpid()  << "\n" << endl;
+    fout.close();
 
     for (i = 0; i <= NUM_THREADS; i++) {
-
-        pthread_create(&bots[i], NULL, chat,(void *) (size_t) i);
+        thread_args[i] = i;
+        pthread_create(&bots[i], NULL, chat,(void *) &thread_args[i]);
     }
 
     for(i = 0; i<= NUM_THREADS; i++){
@@ -70,6 +72,5 @@ int main() {
     }
 
     sem_destroy(&FLAG);
-
-    return 0;
+    exit(0);
 }
