@@ -22,16 +22,30 @@ sem_t FLAG;
 pthread_mutex_t lock;
 
 void* chat(void* botid) {
-    string newline = "\n";
+    string buffer;
     int bid = *((int*)botid);
     int reps = 0;
+    int i;
+        string id = to_string(bid);
         if (bid % 2 == 0) {
             pthread_mutex_lock(&lock);
             sleep(2);
             sem_wait(&FLAG);
             cout << "thread" << bid << " is running" << endl;
-            file = fopen("QUOTE.txt", "w+");
-            fprintf(file, "%s %i %s", "\nbot#", bid, " Controlling complexity is the essence of computer programming.");
+            file = fopen("QUOTE.txt", "r+");
+            while (1) {
+                buffer = fgetc(file);
+                if (feof(file))
+                    break;
+            }
+            buffer.append("\nbot#");
+            buffer.append(id);
+            buffer.append(" Controlling complexity is the essence of computer programming.");
+            char p[buffer.length()];
+            for (i = 0; i < sizeof(p); i++) {
+                p[i] = buffer[i];
+            }
+            fprintf(file, "%s", p);
             fclose(file);
             sem_post(&FLAG);
             reps++;
@@ -42,8 +56,20 @@ void* chat(void* botid) {
             sleep(3);
             sem_wait(&FLAG);
             cout << "thread" << bid << " is running" << endl;
-            file = fopen("QUOTE.txt", "w+");
-            fprintf(file, "%s %i %s", "\nbot#", bid, "\n Computer science is no more about computers than astronomy is about telescopes.");
+            file = fopen("QUOTE.txt", "r+");
+            while (1) {
+                buffer = fgetc(file);
+                if (feof(file))
+                    break;
+            }
+            buffer.append("\nbot#");
+            buffer.append(id);
+            buffer.append(" Controlling complexity is the essence of computer programming.");
+            char p[buffer.length()];
+            for (i = 0; i < sizeof(p); i++) {
+                p[i] = buffer[i];
+            }
+            fprintf(file, "%s", p);
             fclose(file);
             sem_post(&FLAG);
             reps++;
