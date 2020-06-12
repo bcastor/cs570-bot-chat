@@ -1,60 +1,76 @@
-/*
- * Brandon Castor 817046315 cssc 2129
+/*Brandon Castor 817046315 cssc 2129
  *
  * Alexander Howes 820184866 cssc 2165
+ *
  */
+
 #include <iostream>
 #include <fstream>
-#include <unistd.h>
-#include <cstdlib>
+#include <stdio.h> 
+#include <stdlib.h> 
 #include <pthread.h>
+#include <semaphore.h>
+#include <chrono>
+#include <unistd.h>
+#include <string>
 
 using namespace std;
 
-struct arg_struct {
-    ofstream *file;
-    int id;
-};
 #define NUM_THREADS 7
-//makes the bot send a message and display its id
-void* chat(void* arguments) {
-    struct arg_struct* args = (struct arg_struct*)arguments;
-    int i = args->id;
-    ofstream thisfile = args->&file;
-    thisfile.open("QUOTE.txt");
-    thisfile << "Hello, i'm a bot #" << i << endl;
-    thisfile.close();
-    thisfile.clear();
-    pthread_exit(NULL);
+FILE* file;
+sem_t FLAG;
+pthread_mutex_t lock;
+
+void* chat(void* botid) {
+    string newline = "\n";
+    int bid = *((int*)botid);
+    int reps = 0;
+        if (bid % 2 == 0) {
+            pthread_mutex_lock(&lock);
+            sleep(2);
+            sem_wait(&FLAG);
+            cout << "thread" << bid << " is running" << endl;
+            file = fopen("QUOTE.txt", "w+");
+            fprintf(file, "%s %i %s", "\nbot#", bid, " Controlling complexity is the essence of computer programming.");
+            fclose(file);
+            sem_post(&FLAG);
+            reps++;
+            pthread_mutex_unlock(&lock);
+        }
+        else {
+            pthread_mutex_lock(&lock);
+            sleep(3);
+            sem_wait(&FLAG);
+            cout << "thread" << bid << " is running" << endl;
+            file = fopen("QUOTE.txt", "w+");
+            fprintf(file, "%s %i %s", "\nbot#", bid, "\n Computer science is no more about computers than astronomy is about telescopes.");
+            fclose(file);
+            sem_post(&FLAG);
+            reps++;
+            pthread_mutex_unlock(&lock);
+        }
 }
 
 int main() {
 
-
-    ofstream myfile;
-    myfile.open("QUOTE.txt");
-    myfile << getpid() << "\n";
-    myfile.close();
-    myfile.clear();
-
-    struct arg_struct args;
-    args.file = &myfile;
-
+    sem_init(&FLAG, 0, 1);
     pthread_t bots[NUM_THREADS];
-    int rc;
+    int thread_args[NUM_THREADS];
     int i;
-
+    int rc;
+    int pid = getpid();
+    file = fopen("QUOTE.txt", "w+");
+    fprintf(file, "%i", pid);
+    fclose(file);
     for (i = 0; i <= NUM_THREADS; i++) {
-        cout << "creating bot# " << i << endl;
-        args.id = i;
-        //creates a thread called bot and displays a message upon creation
-        rc = pthread_create(&bots[i], NULL, chat, (void*)&args);
-
-        if (rc) {
-            cout << "ERROR: unable to create bot," << rc << endl;
-            exit(-1);
-        }
+        thread_args[i] = i;
+        pthread_create(&bots[i], NULL, chat, (void*)&thread_args[i]);
     }
 
-    pthread_exit(NULL);
+    for (i = 0; i <= NUM_THREADS; i++) {
+        pthread_join(bots[i], NULL);
+    }
+    pthread_mutex_destroy(&lock);
+    sem_destroy(&FLAG);
+    exit(0);
 }
