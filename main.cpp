@@ -78,7 +78,7 @@ void* chat(void* botid) {
 }
 
 int main() {
-
+    int seven = 0;
     sem_init(&FLAG, 0, 1);
     pthread_t bots[NUM_THREADS];
     int thread_args[NUM_THREADS];
@@ -88,11 +88,13 @@ int main() {
     file = fopen("QUOTE.txt", "w+");
     fprintf(file, "%i", pid);
     fclose(file);
-    for (i = 0; i <= NUM_THREADS; i++) {
-        thread_args[i] = i;
-        pthread_create(&bots[i], NULL, chat, (void*)&thread_args[i]);
+    while (seven<7) {
+        for (i = 0; i <= NUM_THREADS; i++) {
+            thread_args[i] = i;
+            pthread_create(&bots[i], NULL, chat, (void*)&thread_args[i]);
+        }
+        seven++;
     }
-
     for (i = 0; i <= NUM_THREADS; i++) {
         pthread_join(bots[i], NULL);
     }
