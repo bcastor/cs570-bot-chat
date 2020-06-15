@@ -6,102 +6,102 @@
 
 #include <iostream>
 #include <fstream>
+#include <string>
 #include <pthread.h>
 #include <semaphore.h>
-#include <chrono>
 #include <unistd.h>
-#include <string>
-
-
-using namespace std;
+#include "bots.h"
 
 #define NUM_THREADS 7
-FILE* file;
+
+using std::string;
+using std::cout;
+using std::endl;
+using std::to_string;
+using std::ifstream;
+using std::ofstream;
+using std::ios;
+
 sem_t FLAG;
+static const string file_name = "QUOTE.txt";
 
-
+/**
+ * writes a message to a file managed by a semaphore
+ * @param botid
+ * @return
+ */
 void *chat(void *botid) {
     string buffer;
-    int bid = *((int*)botid);
-    string id = to_string(bid);
+    int bid = *((int *) botid);
     int reps = 0;
+    //repeat message 8 times
+    while (reps != 8 ){
+        if (bid % 2 == 0) {//message for even numbered threads
 
-    while( reps != 8){
-        if(bid % 2 == 0){
 
+            sem_wait(&FLAG);//open semaphore
+            cout << "thread" << bid << " is running..." << endl;
+            ofstream file(file_name, ios::app);
+
+            if (!file.is_open()) {
+                cout << "File couldnt be opened" << endl;
+                return 0;
+            }
+
+            file << "Bot#" << bid << ": \"Controlling complexity is the essence of computer programming.\" -- Brian Kernigan\r\n" <<endl;
+            file.close();
+            sem_post(&FLAG);//close semaphore
+            reps++;
             sleep(2);
-            sem_wait(&FLAG);
-            cout << "thread" << bid << " is running..." << endl;
-            file = fopen("QUOTE.txt", "r+");
-            while (1){
-
-                if (feof(file)){
-                    break;
-                }
-                buffer = fgetc(file);
-            }
-            buffer.append("Bot#");
-            buffer.append(id);
-            buffer.append(": Controlling complexity is the essence of computer programming.");
-
-            char p[buffer.length()];
-            for (int i = 0; i < buffer.length(); i++){
-                p[i] = buffer[i];
-            }
-            fprintf(file, "%s\n", p);
-            fclose(file);
-            sem_post(&FLAG);
-            reps++;
         }
-        else{
-            sleep(3);
-            sem_wait(&FLAG);
-            cout << "thread" << bid << " is running..." << endl;
-            file = fopen("QUOTE.txt", "r+");
-            while (1){
-                buffer = fgetc(file);
-                if (feof(file))
-                    break;
-            }
-            buffer.append("Bot#");
-            buffer.append(id);
-            buffer.append(": Computer science is no more about computers than astronomy is about telescopes.");
 
-            char p[buffer.length()];
-            for (int i = 0; i < buffer.length(); i++){
-                p[i] = buffer[i];
+        else {//message for odd number threads
+
+            sem_wait(&FLAG);//open semaphore
+            cout << "thread" << bid << " is running..." << endl;
+            ofstream file(file_name, ios::app);
+
+            if (!file.is_open()) {
+                cout << "File couldnt be opened" << endl;
+                return 0;
             }
-            fprintf(file, "%s\n", p);
-            fclose(file);
-            sem_post(&FLAG);
+
+            file << "Bot#" << bid << ": \"Computer science is no more about computers than astronomy is about telescopes.\" -- Edsger Dijkkstra\r\n" <<endl;
+            file.close();
+            sem_post(&FLAG);//close semaphore
             reps++;
+            sleep(3);
         }
     }
 }
 
 int main() {
-
     sem_init(&FLAG, 0, 1);
     int thread_args[NUM_THREADS];
     pthread_t bots[NUM_THREADS];
     int i;
     int pid = getpid();
 
-    file = fopen("QUOTE.txt", "w+");
-    fprintf(file, "%i\n", pid);
-    fclose(file);
+    ofstream file(file_name, ios::app);
+    if (!file.is_open()) {
+        cout << "File couldnt be opened" << endl;
+        return 0;
+    }
 
-    for (i = 0; i <= NUM_THREADS; i++) {
+    file << pid << "\r\n"<< endl;
+    file.close();
+    //create and initialize threads 1 - 7
+    for (i = 1; i <= NUM_THREADS; i++) {
         thread_args[i] = i;
-        pthread_create(&bots[i], NULL, chat, (void *) &thread_args[i]);
+        pthread_create(&bots[i], nullptr, chat, (void *) &thread_args[i]);//pass id as argument for the thread
     }
-
+    //join all the threads
     for (i = 0; i <= NUM_THREADS; i++) {
-        pthread_join(bots[i], NULL);
+        pthread_join(bots[i], nullptr);
     }
-
+    //destroy semaphore
     sem_destroy(&FLAG);
-
+    //termination message
     cout << "Chat terminated..." << endl;
-    exit(0);
+    return 0;
 }
